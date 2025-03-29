@@ -1,7 +1,10 @@
 export const reducer = (state, { type, payload }) => {
   switch (type) {
     case 'SET_GOODS':
-      return {}
+      return {
+        ...state,
+        goods: payload || [],
+      }
 
     case 'ADD_ITEM_TO_BASKET': {
     }

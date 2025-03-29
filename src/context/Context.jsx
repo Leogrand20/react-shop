@@ -1,4 +1,5 @@
 import { createContext, useReducer } from 'react'
+
 import { reducer } from './reducer'
 
 export const ShopContext = createContext()
@@ -11,9 +12,11 @@ const initialState = {
 }
 
 export const ContextProvider = ({ children }) => {
-  const [value, dispatch] = useReducer(initialState, reducer)
+  const [value, dispatch] = useReducer(reducer, initialState)
 
-  value.setGoods = () => {}
+  value.setGoods = (data) => {
+    dispatch({ type: 'SET_GOODS', payload: data })
+  }
 
   value.addItemToBasket = () => {}
 

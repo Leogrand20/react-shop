@@ -1,19 +1,27 @@
 import { useEffect, useContext } from 'react'
+
 import { ShopContext } from '../context/Context'
-import { getData } from '../../api'
+import { getAllItems } from '../../api'
 import { GoodsList } from '../components/GoodsList'
 import { Cart } from '../components/Cart'
 import { BasketList } from '../components/Basketlist'
 import { Alert } from '../components/Alert'
 
 export const Main = () => {
-  const {} = useContext(ShopContext)
+  const { setGoods } = useContext(ShopContext)
 
-  useEffect(() => {}, [])
+  useEffect(() => {
+    getAllItems().then((data) => {
+      setGoods(data)
+    })
+  }, [])
 
   return (
     <main className="main">
-      <div className="main__container"></div>
+      <div className="main__container">
+        <Cart />
+        <GoodsList />
+      </div>
     </main>
   )
 }

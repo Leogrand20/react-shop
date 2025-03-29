@@ -1,12 +1,14 @@
-import { API_KEY, API_URL } from './config'
+import axios from 'axios'
 
-export const getData = async () => {
-  const res = await fetch(API_URL, {
+import { API_URL, API_KEY } from './config'
+import { createGoods } from './src/utils/createGoods'
+
+export const getAllItems = async () => {
+  const { data } = await axios(API_URL, {
     headers: {
       Authorization: API_KEY,
     },
   })
-  const json = await res.json()
 
-  return json
+  return createGoods(data.shop)
 }

@@ -49,6 +49,17 @@ const orderSlice = createSlice({
       state.order = state.order.filter(({ id }) => id !== payload)
     },
 
+    setIncreaseQuantity: (state, { payload }) => {
+      state.order = state.order.map((orderItem) => {
+        if (orderItem.id === payload) {
+          return {
+            ...orderItem,
+            quantity: orderItem.quantity + 1,
+          }
+        } else return orderItem
+      })
+    },
+
     setCloseAlert: (state) => {
       state.alertName = ''
     },
@@ -61,6 +72,7 @@ export const {
   setClearBasket,
   setCloseAlert,
   setRemoveItemFromBasket,
+  setIncreaseQuantity,
 } = orderSlice.actions
 
 export const selectOrder = (state) => state.order.order

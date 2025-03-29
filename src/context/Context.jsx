@@ -14,10 +14,6 @@ const initialState = {
 export const ContextProvider = ({ children }) => {
   const [value, dispatch] = useReducer(reducer, initialState)
 
-  value.removeItemFromBasket = (itemId) => {
-    dispatch({ type: 'REMOVE_ITEM_FROM_BASKET', payload: itemId })
-  }
-
   value.increaseQuantity = (itemId) => {
     dispatch({ type: 'INCREASE_QUANTITY', payload: itemId })
   }

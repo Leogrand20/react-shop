@@ -1,17 +1,5 @@
 export const reducer = (state, { type, payload }) => {
   switch (type) {
-    case 'TOGGLE_BASKET':
-      return {
-        ...state,
-        isBasketVisible: !state.isBasketVisible,
-      }
-
-    case 'REMOVE_ITEM_FROM_BASKET':
-      return {
-        ...state,
-        order: state.order.filter(({ id }) => id !== payload),
-      }
-
     case 'INCREASE_QUANTITY':
       return {
         ...state,

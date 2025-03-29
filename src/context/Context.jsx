@@ -14,14 +14,6 @@ const initialState = {
 export const ContextProvider = ({ children }) => {
   const [value, dispatch] = useReducer(reducer, initialState)
 
-  value.handleBasketVisible = () => {
-    dispatch({ type: 'TOGGLE_BASKET' })
-  }
-
-  value.clearBasket = () => {
-    dispatch({ type: 'CLEAR_BASKET' })
-  }
-
   value.removeItemFromBasket = (itemId) => {
     dispatch({ type: 'REMOVE_ITEM_FROM_BASKET', payload: itemId })
   }

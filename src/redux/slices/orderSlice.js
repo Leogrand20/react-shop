@@ -41,14 +41,22 @@ const orderSlice = createSlice({
       state.isBasketVisible = !state.isBasketVisible
     },
 
+    setClearBasket: (state) => {
+      state.order = []
+    },
+
     setCloseAlert: (state) => {
       state.alertName = ''
     },
   },
 })
 
-export const { setAddItemToBasket, setToggleBasketVisible, setCloseAlert } =
-  orderSlice.actions
+export const {
+  setAddItemToBasket,
+  setToggleBasketVisible,
+  setClearBasket,
+  setCloseAlert,
+} = orderSlice.actions
 
 export const selectOrder = (state) => state.order.order
 export const selectToggleBasketVisible = (state) => state.order.isBasketVisible

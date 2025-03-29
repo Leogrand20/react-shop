@@ -6,12 +6,6 @@ export const reducer = (state, { type, payload }) => {
         isBasketVisible: !state.isBasketVisible,
       }
 
-    case 'CLEAR_BASKET':
-      return {
-        ...state,
-        order: [],
-      }
-
     case 'REMOVE_ITEM_FROM_BASKET':
       return {
         ...state,

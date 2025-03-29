@@ -1,12 +1,15 @@
-import { useContext, useEffect } from 'react'
-import { ShopContext } from '../context/Context'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { setCloseAlert, selectAlertName } from '../redux/slices/orderSlice'
 
 export const Alert = () => {
-  const { closeAlert, alertName } = useContext(ShopContext)
+  const alertName = useSelector(selectAlertName)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const id = setTimeout(() => {
-      closeAlert()
+      dispatch(setCloseAlert())
     }, 2500)
 
     return () => clearTimeout(id)

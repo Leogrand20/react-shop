@@ -5,11 +5,10 @@ import { CiSquarePlus, CiSquareMinus } from 'react-icons/ci'
 import {
   setRemoveItemFromBasket,
   setIncreaseQuantity,
+  setDecreaseQuantity,
 } from '../redux/slices/orderSlice'
 
 export const BasketItem = ({ id, name, price, quantity }) => {
-  // const { decreaseQuantity } =
-  //   useContext(ShopContext)
   const dispatch = useDispatch()
 
   return (
@@ -22,7 +21,10 @@ export const BasketItem = ({ id, name, price, quantity }) => {
             onClick={() => dispatch(setIncreaseQuantity(id))}
           />
           {quantity} шт.
-          <CiSquareMinus className="-ml-2 hover:cursor-pointer" />
+          <CiSquareMinus
+            className="-ml-2 hover:cursor-pointer"
+            onClick={() => dispatch(setDecreaseQuantity(id))}
+          />
           {price.finalPrice * quantity} руб.
         </div>
 

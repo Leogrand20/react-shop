@@ -8,11 +8,15 @@ import { BasketList } from '../components/Basketlist'
 import { Alert } from '../components/Alert'
 
 import { setGoods } from '../redux/slices/goodsSlice'
-import { selectToggleBasketVisible } from '../redux/slices/orderSlice'
+import {
+  selectAlertName,
+  selectToggleBasketVisible,
+} from '../redux/slices/orderSlice'
 
 export const Main = () => {
   const dispatch = useDispatch()
   const isBasketVisible = useSelector(selectToggleBasketVisible)
+  const alertName = useSelector(selectAlertName)
 
   useEffect(() => {
     getAllItems().then((data) => {
@@ -27,7 +31,7 @@ export const Main = () => {
 
         {isBasketVisible && <BasketList />}
 
-        {/* {alertName && <Alert />} */}
+        {alertName && <Alert />}
 
         <GoodsList />
       </div>

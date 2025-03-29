@@ -1,7 +1,3 @@
-import { useContext } from 'react'
-
-import { ShopContext } from '../context/Context'
-
 export const GoodsItem = ({
   mainId: id,
   displayName: name,
@@ -11,7 +7,7 @@ export const GoodsItem = ({
 }) => {
   const image = granted[0]?.images?.full_background
 
-  const { addItemToBasket } = useContext(ShopContext)
+  // const { addItemToBasket } = useContext(ShopContext)
 
   return (
     <div className="card">

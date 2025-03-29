@@ -1,18 +1,21 @@
-import { useEffect, useContext } from 'react'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { ShopContext } from '../context/Context'
 import { getAllItems } from '../../api'
 import { GoodsList } from '../components/GoodsList'
 import { Cart } from '../components/Cart'
 import { BasketList } from '../components/Basketlist'
 import { Alert } from '../components/Alert'
 
+import { setGoods } from '../redux/slices/goodsSlice'
+
 export const Main = () => {
-  const { setGoods, isBasketVisible, alertName } = useContext(ShopContext)
+  // const { setGoods, isBasketVisible, alertName } = useContext(ShopContext)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     getAllItems().then((data) => {
-      setGoods(data)
+      dispatch(setGoods(data))
     })
   }, [])
 
@@ -21,9 +24,9 @@ export const Main = () => {
       <div className="main__container">
         <Cart />
 
-        {isBasketVisible && <BasketList />}
+        {/* {isBasketVisible && <BasketList />} */}
 
-        {alertName && <Alert />}
+        {/* {alertName && <Alert />} */}
 
         <GoodsList />
       </div>

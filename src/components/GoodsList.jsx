@@ -1,10 +1,10 @@
-import { useContext } from 'react'
+import { useSelector } from 'react-redux'
 
-import { ShopContext } from '../context/Context'
 import { GoodsItem } from './GoodsItem'
+import { selectGoods } from '../redux/slices/goodsSlice'
 
 export const GoodsList = () => {
-  const { goods } = useContext(ShopContext)
+  const goods = useSelector(selectGoods)
 
   return (
     <div className="cards">

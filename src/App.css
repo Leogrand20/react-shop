@@ -1,0 +1,126 @@
+.header {
+  @apply bg-amber-500 w-full min-h-[50px] flex px-4;
+}
+
+.main {
+  @apply flex-auto px-4 lg:px-0;
+}
+
+.main__container {
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+.shop {
+  @apply flex min-h-screen flex-col;
+}
+
+.footer {
+  @apply flex px-16 justify-between py-4 bg-emerald-950;
+}
+
+h1 {
+  font-family: TildaSans;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 3rem 1rem;
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.card {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  gap: 10px;
+  border: 2px solid gray;
+}
+
+.card__poster img {
+  height: 100%;
+  width: 100%;
+}
+
+.cart {
+  position: fixed;
+  top: 5rem;
+  right: 2rem;
+  cursor: pointer;
+  z-index: 5;
+  padding: 1rem;
+  background-color: blueviolet;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.basket {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  color: #000;
+  padding: 20px;
+  min-width: clamp(15.625rem, 3.125rem + 62.5vw, 50rem);
+  animation: showBasket 0.5s ease-in-out;
+}
+
+.btn-close {
+  position: absolute;
+  top: -5px;
+  right: 10px;
+  font-size: 33px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.item-delete {
+  cursor: pointer;
+}
+
+@keyframes showBasket {
+  from {
+    top: 25%;
+    opacity: 0;
+  }
+
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}
+
+.btn-clear {
+  background: green;
+  margin-top: 20px;
+}
+
+.alert {
+  position: fixed;
+  top: 10rem;
+  right: 1rem;
+  background: #fff;
+  color: #000;
+  padding: 10px;
+
+  animation: showAlert 0.5s ease-in-out;
+}
+
+@keyframes showAlert {
+  from {
+    opacity: 0;
+    top: 12rem;
+  }
+
+  to {
+    opacity: 1;
+    top: 10rem;
+  }
+}

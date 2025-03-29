@@ -1,0 +1,38 @@
+@import "tailwindcss";
+@import "@css/fonts";
+
+@theme {
+  --color-black-000: #000;
+  --color-black-333: #333;
+  --color-white-333: #fff;
+  --text-100: 100px;
+  --size-100: 100px;
+  --font-roboto: "Roboto", sans-serif;
+  --font-tilda: "TildaSans", sans-serif;
+}
+
+body {
+  background: var(--color-black-333);
+  color: var(--color-white-333);
+}
+
+input,
+textarea {
+  color: var(--color-black-000);
+  background: #fff;
+  border: 1px solid #000;
+  padding: 8px;
+}
+
+button {
+  padding: 8px 20px;
+  background: #fff;
+  border-radius: 5px;
+  color: #000;
+  cursor: pointer;
+  font-weight: 500;
+
+  &:hover {
+    background-color: #f00;
+  }
+}

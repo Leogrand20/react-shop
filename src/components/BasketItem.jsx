@@ -4,16 +4,23 @@ import { CiSquarePlus, CiSquareMinus } from 'react-icons/ci'
 import { ShopContext } from '../context/Context'
 
 export const BasketItem = ({ id, name, price, quantity }) => {
-  const { removeItemFromBasket } = useContext(ShopContext)
+  const { removeItemFromBasket, increaseQuantity, decreaseQuantity } =
+    useContext(ShopContext)
 
   return (
     <>
       <div className="mt-2 flex items-center justify-between">
         <div className="flex items-center gap-2">
           {name}
-          <CiSquarePlus className="-mr-2 hover:cursor-pointer" />
+          <CiSquarePlus
+            className="-mr-2 hover:cursor-pointer"
+            onClick={() => increaseQuantity(id)}
+          />
           {quantity} шт.
-          <CiSquareMinus className="-ml-2 hover:cursor-pointer" />
+          <CiSquareMinus
+            className="-ml-2 hover:cursor-pointer"
+            onClick={() => decreaseQuantity(id)}
+          />
           {price.finalPrice * quantity} руб.
         </div>
 

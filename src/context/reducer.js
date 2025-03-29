@@ -57,10 +57,32 @@ export const reducer = (state, { type, payload }) => {
       }
 
     case 'INCREASE_QUANTITY':
-      return {}
+      return {
+        ...state,
+        order: state.order.map((orderItem) => {
+          if (orderItem.id === payload) {
+            return {
+              ...orderItem,
+              quantity: orderItem.quantity + 1,
+            }
+          }
+        }),
+      }
 
     case 'DECREASE_QUANTITY':
-      return {}
+      return {
+        ...state,
+        order: state.order.map((orderItem) => {
+          if (orderItem.id === payload) {
+            const newOrderItem = orderItem.quantity - 1
+
+            return {
+              ...orderItem,
+              quantity: newOrderItem ? newOrderItem : 0,
+            }
+          }
+        }),
+      }
 
     case 'CLOSE_ALERT':
       return {}

@@ -34,9 +34,13 @@ export const ContextProvider = ({ children }) => {
     dispatch({ type: 'REMOVE_ITEM_FROM_BASKET', payload: itemId })
   }
 
-  value.increaseQuantity = () => {}
+  value.increaseQuantity = (itemId) => {
+    dispatch({ type: 'INCREASE_QUANTITY', payload: itemId })
+  }
 
-  value.decreaseQuantity = () => {}
+  value.decreaseQuantity = (itemId) => {
+    dispatch({ type: 'DECREASE_QUANTITY', payload: itemId })
+  }
 
   value.closeAlert = () => {}
 

@@ -45,6 +45,10 @@ const orderSlice = createSlice({
       state.order = []
     },
 
+    setRemoveItemFromBasket: (state, { payload }) => {
+      state.order = state.order.filter(({ id }) => id !== payload)
+    },
+
     setCloseAlert: (state) => {
       state.alertName = ''
     },
@@ -56,6 +60,7 @@ export const {
   setToggleBasketVisible,
   setClearBasket,
   setCloseAlert,
+  setRemoveItemFromBasket,
 } = orderSlice.actions
 
 export const selectOrder = (state) => state.order.order

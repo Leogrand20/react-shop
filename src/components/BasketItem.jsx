@@ -1,11 +1,13 @@
-import { useContext } from 'react'
+import { useDispatch } from 'react-redux'
 import { IoCloseOutline } from 'react-icons/io5'
 import { CiSquarePlus, CiSquareMinus } from 'react-icons/ci'
-import { ShopContext } from '../context/Context'
+
+import { setRemoveItemFromBasket } from '../redux/slices/orderSlice'
 
 export const BasketItem = ({ id, name, price, quantity }) => {
   // const { removeItemFromBasket, increaseQuantity, decreaseQuantity } =
   //   useContext(ShopContext)
+  const dispatch = useDispatch()
 
   return (
     <>
@@ -18,7 +20,10 @@ export const BasketItem = ({ id, name, price, quantity }) => {
           {price.finalPrice * quantity} руб.
         </div>
 
-        <IoCloseOutline className="item-delete" />
+        <IoCloseOutline
+          className="item-delete"
+          onClick={() => dispatch(setRemoveItemFromBasket(id))}
+        />
       </div>
       <hr />
     </>

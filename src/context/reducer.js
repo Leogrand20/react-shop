@@ -7,6 +7,35 @@ export const reducer = (state, { type, payload }) => {
       }
 
     case 'ADD_ITEM_TO_BASKET': {
+      const index = state.order.findIndex(
+        (orderItem) => orderItem.id === payload.id,
+      )
+
+      let newOrder = null
+
+      if (index < 0) {
+        const newItem = {
+          ...payload,
+          quantity: 1,
+        }
+
+        newOrder = [...state.order, newItem]
+      } else {
+        newOrder = state.order.map((orderItem, id) => {
+          if (id === index) {
+            return {
+              ...orderItem,
+              quantity: orderItem.quantity + 1,
+            }
+          } else return orderItem
+        })
+      }
+
+      return {
+        ...state,
+        order: newOrder,
+        alertName: payload.name,
+      }
     }
 
     case 'TOGGLE_BASKET':

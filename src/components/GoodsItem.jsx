@@ -11,7 +11,7 @@ export const GoodsItem = ({
 }) => {
   const image = granted[0]?.images?.full_background
 
-  const {} = useContext(ShopContext)
+  const { addItemToBasket } = useContext(ShopContext)
 
   return (
     <div className="card">
@@ -24,7 +24,12 @@ export const GoodsItem = ({
         <p className="card-description flex-auto px-2">{descr}</p>
         <hr className="mt-2" />
         <div className="mt-4 flex items-center justify-between px-2">
-          <button type="button">Купить</button>
+          <button
+            type="button"
+            onClick={() => addItemToBasket({ id, name, price })}
+          >
+            Купить
+          </button>
           <span className="text-white">{price.finalPrice} руб.</span>
         </div>
       </div>

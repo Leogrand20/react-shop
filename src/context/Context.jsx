@@ -18,7 +18,9 @@ export const ContextProvider = ({ children }) => {
     dispatch({ type: 'SET_GOODS', payload: data })
   }
 
-  value.addItemToBasket = () => {}
+  value.addItemToBasket = (item) => {
+    dispatch({ type: 'ADD_ITEM_TO_BASKET', payload: item })
+  }
 
   value.handleBasketVisible = () => {}
 

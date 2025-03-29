@@ -1,8 +1,10 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import {
+  createSlice,
+  createAsyncThunk,
+  createEntityAdapter,
+} from '@reduxjs/toolkit'
 
-const initialState = {
-  goods: [],
-}
+const goodsAdapter = createEntityAdapter()
 
 export const fetchGoods = createAsyncThunk(
   'goods/fetchGoods',
@@ -15,23 +17,23 @@ export const fetchGoods = createAsyncThunk(
 
 const goodsSlice = createSlice({
   name: 'goods',
-  initialState,
+  initialState: goodsAdapter.getInitialState(),
 
   reducers: {
     setGoods: (state, { payload }) => {
-      state.goods = [...payload]
+      goodsAdapter.setAll(state, [...payload])
     },
   },
 
   extraReducers: ({ addCase }) => {
     addCase(fetchGoods.fulfilled, (state, { payload }) => {
-      state.goods = [...payload]
+      goodsAdapter.setAll(state, [...payload])
     })
   },
 })
 
 export const { setGoods } = goodsSlice.actions
 
-export const selectGoods = (state) => state.goods.goods
+export const { selectAll } = goodsAdapter.getSelectors((state) => state.goods)
 
 export default goodsSlice.reducer

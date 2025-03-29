@@ -3,7 +3,12 @@ import { ShopContext } from '../context/Context'
 import { BasketItem } from './BasketItem'
 
 export const BasketList = () => {
-  const { order, handleBasketVisible } = useContext(ShopContext)
+  const { order, handleBasketVisible, clearBasket } = useContext(ShopContext)
+
+  const totalPrice = order.reduce(
+    (acc, { price, quantity }) => (acc += price.finalPrice * quantity),
+    0,
+  )
 
   return (
     <div className="basket">
@@ -16,9 +21,11 @@ export const BasketList = () => {
       ) : (
         <span className="mt-2 block text-center">Корзина пуста</span>
       )}
-      <span className="mt-3 block text-xl">Общая стоимость товаров: руб.</span>
+      <span className="mt-3 block text-xl">
+        Общая стоимость товаров: {totalPrice} руб.
+      </span>
 
-      <button type="button" className="btn-clear">
+      <button type="button" className="btn-clear" onClick={clearBasket}>
         Очистить корзину
       </button>
     </div>

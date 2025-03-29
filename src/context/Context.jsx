@@ -26,7 +26,9 @@ export const ContextProvider = ({ children }) => {
     dispatch({ type: 'TOGGLE_BASKET' })
   }
 
-  value.clearBasket = () => {}
+  value.clearBasket = () => {
+    dispatch({ type: 'CLEAR_BASKET' })
+  }
 
   value.removeItemFromBasket = () => {}
 

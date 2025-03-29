@@ -42,7 +42,9 @@ export const ContextProvider = ({ children }) => {
     dispatch({ type: 'DECREASE_QUANTITY', payload: itemId })
   }
 
-  value.closeAlert = () => {}
+  value.closeAlert = () => {
+    dispatch({ type: 'CLOSE_ALERT' })
+  }
 
   return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>
 }

@@ -85,7 +85,10 @@ export const reducer = (state, { type, payload }) => {
       }
 
     case 'CLOSE_ALERT':
-      return {}
+      return {
+        ...state,
+        alertName: '',
+      }
 
     default:
       return

@@ -2,14 +2,20 @@ import { useContext, useEffect } from 'react'
 import { ShopContext } from '../context/Context'
 
 export const Alert = () => {
-  const {} = useContext(ShopContext)
+  const { closeAlert, alertName } = useContext(ShopContext)
 
-  useEffect(() => {}, [])
+  useEffect(() => {
+    const id = setTimeout(() => {
+      closeAlert()
+    }, 2500)
+
+    return () => clearTimeout(id)
+  }, [alertName])
 
   return (
     <div className="alert">
       <p>
-        <strong></strong> добавлен в корзину
+        <strong>{alertName}</strong> добавлен в корзину
       </p>
     </div>
   )

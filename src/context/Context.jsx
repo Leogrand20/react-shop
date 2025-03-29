@@ -30,7 +30,9 @@ export const ContextProvider = ({ children }) => {
     dispatch({ type: 'CLEAR_BASKET' })
   }
 
-  value.removeItemFromBasket = () => {}
+  value.removeItemFromBasket = (itemId) => {
+    dispatch({ type: 'REMOVE_ITEM_FROM_BASKET', payload: itemId })
+  }
 
   value.increaseQuantity = () => {}
 

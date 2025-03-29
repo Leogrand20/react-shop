@@ -4,7 +4,7 @@ import { CiSquarePlus, CiSquareMinus } from 'react-icons/ci'
 import { ShopContext } from '../context/Context'
 
 export const BasketItem = ({ id, name, price, quantity }) => {
-  const {} = useContext(ShopContext)
+  const { removeItemFromBasket } = useContext(ShopContext)
 
   return (
     <>
@@ -17,7 +17,10 @@ export const BasketItem = ({ id, name, price, quantity }) => {
           {price.finalPrice * quantity} руб.
         </div>
 
-        <IoCloseOutline className="item-delete" />
+        <IoCloseOutline
+          className="item-delete"
+          onClick={() => removeItemFromBasket(id)}
+        />
       </div>
       <hr />
     </>

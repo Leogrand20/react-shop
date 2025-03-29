@@ -39,7 +39,10 @@ export const reducer = (state, { type, payload }) => {
     }
 
     case 'TOGGLE_BASKET':
-      return {}
+      return {
+        ...state,
+        isBasketVisible: !state.isBasketVisible,
+      }
 
     case 'CLEAR_BASKET':
       return {}

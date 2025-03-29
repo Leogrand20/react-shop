@@ -22,7 +22,9 @@ export const ContextProvider = ({ children }) => {
     dispatch({ type: 'ADD_ITEM_TO_BASKET', payload: item })
   }
 
-  value.handleBasketVisible = () => {}
+  value.handleBasketVisible = () => {
+    dispatch({ type: 'TOGGLE_BASKET' })
+  }
 
   value.clearBasket = () => {}
 

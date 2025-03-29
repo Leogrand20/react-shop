@@ -8,7 +8,7 @@ import { BasketList } from '../components/Basketlist'
 import { Alert } from '../components/Alert'
 
 export const Main = () => {
-  const { setGoods } = useContext(ShopContext)
+  const { setGoods, isBasketVisible } = useContext(ShopContext)
 
   useEffect(() => {
     getAllItems().then((data) => {
@@ -20,6 +20,9 @@ export const Main = () => {
     <main className="main">
       <div className="main__container">
         <Cart />
+
+        {isBasketVisible && <BasketList />}
+
         <GoodsList />
       </div>
     </main>

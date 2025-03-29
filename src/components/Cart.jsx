@@ -3,13 +3,15 @@ import { FaCartArrowDown } from 'react-icons/fa'
 import { ShopContext } from '../context/Context'
 
 export const Cart = () => {
-  const {} = useContext(ShopContext)
+  const { order, handleBasketVisible } = useContext(ShopContext)
+
+  const quantity = order.length
 
   return (
-    <div className="cart">
+    <div className="cart" onClick={handleBasketVisible}>
       <FaCartArrowDown />
 
-      {<span className="cart-quantity"></span>}
+      {quantity && <span className="cart-quantity">{quantity}</span>}
     </div>
   )
 }

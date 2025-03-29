@@ -1,5 +1,5 @@
-export const reducer = () => {
-  switch () {
+export const reducer = (state, { type, payload }) => {
+  switch (type) {
     case 'SET_GOODS':
       return {}
 

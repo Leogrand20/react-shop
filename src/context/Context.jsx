@@ -10,7 +10,9 @@ const initialState = {
   alertName: '',
 }
 
-export const ContextProvider = () => {
+export const ContextProvider = ({ children }) => {
+  const [value, dispatch] = useReducer(initialState, reducer)
+
   value.setGoods = () => {}
 
   value.addItemToBasket = () => {}
@@ -27,5 +29,5 @@ export const ContextProvider = () => {
 
   value.closeAlert = () => {}
 
-  return
+  return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>
 }

@@ -14,14 +14,6 @@ const initialState = {
 export const ContextProvider = ({ children }) => {
   const [value, dispatch] = useReducer(reducer, initialState)
 
-  value.setGoods = (data) => {
-    dispatch({ type: 'SET_GOODS', payload: data })
-  }
-
-  value.addItemToBasket = (item) => {
-    dispatch({ type: 'ADD_ITEM_TO_BASKET', payload: item })
-  }
-
   value.handleBasketVisible = () => {
     dispatch({ type: 'TOGGLE_BASKET' })
   }
@@ -40,10 +32,6 @@ export const ContextProvider = ({ children }) => {
 
   value.decreaseQuantity = (itemId) => {
     dispatch({ type: 'DECREASE_QUANTITY', payload: itemId })
-  }
-
-  value.closeAlert = () => {
-    dispatch({ type: 'CLOSE_ALERT' })
   }
 
   return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>

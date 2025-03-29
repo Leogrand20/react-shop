@@ -10,7 +10,7 @@ import { Alert } from '../components/Alert'
 import { setGoods } from '../redux/slices/goodsSlice'
 
 export const Main = () => {
-  // const { setGoods, isBasketVisible, alertName } = useContext(ShopContext)
+  // const { isBasketVisible, alertName } = useContext(ShopContext)
   const dispatch = useDispatch()
 
   useEffect(() => {

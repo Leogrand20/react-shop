@@ -1,3 +1,7 @@
+import { useDispatch } from 'react-redux'
+
+import { setAddItemToBasket } from '../redux/slices/orderSlice'
+
 export const GoodsItem = ({
   mainId: id,
   displayName: name,
@@ -7,7 +11,7 @@ export const GoodsItem = ({
 }) => {
   const image = granted[0]?.images?.full_background
 
-  // const { addItemToBasket } = useContext(ShopContext)
+  const dispatch = useDispatch()
 
   return (
     <div className="card">
@@ -22,7 +26,7 @@ export const GoodsItem = ({
         <div className="mt-4 flex items-center justify-between px-2">
           <button
             type="button"
-            onClick={() => addItemToBasket({ id, name, price })}
+            onClick={() => dispatch(setAddItemToBasket({ id, name, price }))}
           >
             Купить
           </button>

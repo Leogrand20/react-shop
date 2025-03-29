@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { setAddItemToBasket } from '../redux/slices/orderSlice'
 
 export const GoodsItem = ({
-  mainId: id,
+  id,
   displayName: name,
   displayDescription: descr,
   price,

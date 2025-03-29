@@ -1,18 +1,10 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   order: [],
+  isBasketVisible: false,
   alertName: '',
 }
-
-export const fetchGoods = createAsyncThunk(
-  'goods/fetchGoods',
-  async (_, { extra: api }) => {
-    api.getAllItems()
-    try {
-    } catch (error) {}
-  },
-)
 
 const orderSlice = createSlice({
   name: 'order',
@@ -48,21 +40,21 @@ const orderSlice = createSlice({
       state.alertName = payload.name
     },
 
+    setToggleBasketVisible: (state) => {
+      state.isBasketVisible = !state.isBasketVisible
+    },
+
     setCloseAlert: (state) => {
       state.alertName = ''
     },
   },
-
-  extraReducers: ({ addCase }) => {
-    addCase(fetchGoods.fulfilled, (state, { payload }) => {
-      state.goods = [...payload]
-    })
-  },
 })
 
-export const { setAddItemToBasket, setCloseAlert } = orderSlice.actions
+export const { setAddItemToBasket, setToggleBasketVisible, setCloseAlert } =
+  orderSlice.actions
 
 export const selectOrder = (state) => state.order.order
+export const selectToggleBasketVisible = (state) => state.order.isBasketVisible
 export const selectAlertName = (state) => state.order.alertName
 
 export default orderSlice.reducer

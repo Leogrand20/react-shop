@@ -16,17 +16,15 @@ const orderSlice = createSlice({
         (orderItem) => orderItem.id === payload.id,
       )
 
-      let newOrder = null
-
       if (index < 0) {
         const newItem = {
           ...payload,
           quantity: 1,
         }
 
-        newOrder = [...state.order, newItem]
+        state.order = [...state.order, newItem]
       } else {
-        newOrder = state.order.map((orderItem, id) => {
+        state.order = state.order.map((orderItem, id) => {
           if (id === index) {
             return {
               ...orderItem,
@@ -36,7 +34,6 @@ const orderSlice = createSlice({
         })
       }
 
-      state.order = [...newOrder]
       state.alertName = payload.name
     },
 

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { getAllItems } from '../../api'
+import { getAllItems } from '../api/api'
 import { GoodsList } from '../components/GoodsList'
 import { Cart } from '../components/Cart'
 import { BasketList } from '../components/Basketlist'

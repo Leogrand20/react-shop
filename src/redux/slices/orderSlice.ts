@@ -30,7 +30,7 @@ const orderSlice = createSlice({
           if (id === index) {
             return {
               ...orderItem,
-              quantity: orderItem.quantity && orderItem.quantity + 1,
+              quantity: orderItem.quantity + 1,
             }
           } else return orderItem
         })

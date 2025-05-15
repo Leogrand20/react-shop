@@ -10,6 +10,7 @@ export const GoodsItem: FC<GoodsItemProps> = ({
   displayDescription: descr,
   price,
   granted,
+  quantity,
 }) => {
   let image: string | null = ''
 
@@ -33,7 +34,9 @@ export const GoodsItem: FC<GoodsItemProps> = ({
           {name && (
             <button
               type="button"
-              onClick={() => dispatch(setAddItemToBasket({ id, name, price }))}
+              onClick={() =>
+                dispatch(setAddItemToBasket({ id, name, price, quantity }))
+              }
             >
               Купить
             </button>

@@ -16,7 +16,7 @@ export interface IGood {
     },
   ]
   id: string
-  quantity?: number
+  quantity: number
   name: string
 }
 
@@ -36,5 +36,5 @@ export type BasketItemProps = Pick<IGood, 'id' | 'name' | 'price' | 'quantity'>
 
 export type GoodsItemProps = Pick<
   IGood,
-  'id' | 'displayName' | 'displayDescription' | 'price' | 'granted'
+  'id' | 'displayName' | 'displayDescription' | 'price' | 'granted' | 'quantity'
 >

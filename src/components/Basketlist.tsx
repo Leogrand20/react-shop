@@ -11,7 +11,8 @@ export const BasketList = () => {
   const dispatch = useAppDispatch()
 
   const totalPrice = order.reduce(
-    (acc, { price, quantity }) => (acc += price.finalPrice * quantity),
+    (acc, { price, quantity }) =>
+      quantity ? (acc += price.finalPrice * quantity) : 0,
     0,
   )
 

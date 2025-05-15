@@ -1,22 +1,28 @@
-import { useDispatch } from 'react-redux'
+import { FC } from 'react'
 
+import { useAppDispatch } from '../redux/store'
 import { setAddItemToBasket } from '../redux/slices/orderSlice'
+import { GoodsItemProps } from '../types/goods'
 
-export const GoodsItem = ({
+export const GoodsItem: FC<GoodsItemProps> = ({
   id,
   displayName: name,
   displayDescription: descr,
   price,
   granted,
 }) => {
-  const image = granted[0]?.images?.full_background
+  let image: string | null = ''
 
-  const dispatch = useDispatch()
+  if (granted) {
+    image = granted[0].images.full_background
+  }
+
+  const dispatch = useAppDispatch()
 
   return (
     <div className="card">
       <div className="card__poster">
-        <img src={image} alt={name} className="card-img" />
+        <img src={String(image)} alt={String(name)} className="card-img" />
       </div>
 
       <div className="card__content flex flex-col">
@@ -24,12 +30,14 @@ export const GoodsItem = ({
         <p className="card-description flex-auto px-2">{descr}</p>
         <hr className="mt-2" />
         <div className="mt-4 flex items-center justify-between px-2">
-          <button
-            type="button"
-            onClick={() => dispatch(setAddItemToBasket({ id, name, price }))}
-          >
-            Купить
-          </button>
+          {name && (
+            <button
+              type="button"
+              onClick={() => dispatch(setAddItemToBasket({ id, name, price }))}
+            >
+              Купить
+            </button>
+          )}
           <span className="text-white">{price.finalPrice} руб.</span>
         </div>
       </div>

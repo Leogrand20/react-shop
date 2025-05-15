@@ -30,7 +30,7 @@ const orderSlice = createSlice({
           if (id === index) {
             return {
               ...orderItem,
-              quantity: orderItem.quantity + 1,
+              quantity: orderItem.quantity && orderItem.quantity + 1,
             }
           } else return orderItem
         })
@@ -56,7 +56,7 @@ const orderSlice = createSlice({
         if (orderItem.id === payload) {
           return {
             ...orderItem,
-            quantity: orderItem.quantity + 1,
+            quantity: orderItem.quantity && orderItem.quantity + 1,
           }
         } else return orderItem
       })
@@ -65,14 +65,18 @@ const orderSlice = createSlice({
     setDecreaseQuantity: (state, { payload }) => {
       state.order = state.order.map((orderItem) => {
         if (orderItem.id === payload) {
-          const newOrderItem = orderItem.quantity - 1
+          let newOrderItem: number
 
-          return {
-            ...orderItem,
-            quantity: newOrderItem ? newOrderItem : 0,
+          if (orderItem.quantity) {
+            newOrderItem = orderItem.quantity - 1
           }
-        } else return orderItem
-      })
+            
+            return {
+              ...orderItem,
+              quantity: newOrderItem ? newOrderItem : 0,
+            }
+          } else return orderItem
+        })
     },
 
     setCloseAlert: (state) => {

@@ -1,8 +1,8 @@
 import { FC } from 'react'
-import { useDispatch } from 'react-redux'
 import { IoCloseOutline } from 'react-icons/io5'
 import { CiSquarePlus, CiSquareMinus } from 'react-icons/ci'
 
+import { useAppDispatch } from '../redux/store'
 import {
   setRemoveItemFromBasket,
   setIncreaseQuantity,
@@ -16,7 +16,7 @@ export const BasketItem: FC<BasketItemProps> = ({
   price,
   quantity,
 }) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   return (
     <>
@@ -32,7 +32,7 @@ export const BasketItem: FC<BasketItemProps> = ({
             className="-ml-2 hover:cursor-pointer"
             onClick={() => dispatch(setDecreaseQuantity(id))}
           />
-          {price.finalPrice * quantity} руб.
+          {quantity && price.finalPrice * quantity} руб.
         </div>
 
         <IoCloseOutline

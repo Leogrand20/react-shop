@@ -56,7 +56,7 @@ const orderSlice = createSlice({
         if (orderItem.id === payload) {
           return {
             ...orderItem,
-            quantity: orderItem.quantity && orderItem.quantity + 1,
+            quantity: orderItem.quantity + 1,
           }
         } else return orderItem
       })
@@ -65,9 +65,11 @@ const orderSlice = createSlice({
     setDecreaseQuantity: (state, { payload }) => {
       state.order = state.order.map((orderItem) => {
         if (orderItem.id === payload) {
+          const newOrderItem = orderItem.quantity - 1
+
           return {
             ...orderItem,
-            quantity: orderItem.quantity ? orderItem.quantity - 1 : 0,
+            quantity: newOrderItem ? newOrderItem : 0,
           }
         } else return orderItem
       })

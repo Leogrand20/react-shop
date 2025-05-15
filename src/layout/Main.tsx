@@ -22,7 +22,7 @@ export const Main = () => {
     getAllItems().then((data) => {
       dispatch(setGoods(data))
     })
-  }, [])
+  }, [dispatch])
 
   return (
     <main className="main">

@@ -1,6 +1,8 @@
 import { v4 as uuidv4 } from 'uuid'
 
-export const createGoods = (goods) =>
+import { Goods, IGood } from '../types/goods'
+
+export const createGoods = (goods: IGood[]): Goods =>
   goods.map((good) => {
     return {
       ...good,

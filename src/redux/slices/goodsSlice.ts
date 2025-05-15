@@ -1,39 +1,36 @@
-import {
-  createSlice,
-  createAsyncThunk,
-  createEntityAdapter,
-} from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-const goodsAdapter = createEntityAdapter()
+import { Extra } from '../../types/extra'
+import { Goods, GoodsSlice } from '../../types/goods'
 
-export const fetchGoods = createAsyncThunk(
+const initialState: GoodsSlice = {
+  goods: [],
+}
+
+export const fetchGoods = createAsyncThunk<Goods, undefined, { extra: Extra }>(
   'goods/fetchGoods',
-  async (_, { extra: api }) => {
-    api.getAllItems()
-    try {
-    } catch (error) {}
+  async (_, { extra: { api } }) => {
+    return await api.getAllItems()
   },
 )
 
 const goodsSlice = createSlice({
   name: 'goods',
-  initialState: goodsAdapter.getInitialState(),
+  initialState,
 
   reducers: {
     setGoods: (state, { payload }) => {
-      goodsAdapter.setAll(state, [...payload])
+      state.goods = payload
     },
   },
 
   extraReducers: ({ addCase }) => {
     addCase(fetchGoods.fulfilled, (state, { payload }) => {
-      goodsAdapter.setAll(state, [...payload])
+      state.goods = payload
     })
   },
 })
 
 export const { setGoods } = goodsSlice.actions
-
-export const { selectAll } = goodsAdapter.getSelectors((state) => state.goods)
 
 export default goodsSlice.reducer

@@ -1,10 +1,9 @@
-import { useSelector } from 'react-redux'
-
 import { GoodsItem } from './GoodsItem'
-import { selectAll } from '../redux/slices/goodsSlice'
+import { selectGoods } from '../redux/selectors/goods-selectors'
+import { useAppSelector } from '../redux/store'
 
 export const GoodsList = () => {
-  const goods = useSelector(selectAll)
+  const goods = useAppSelector(selectGoods)
 
   return (
     <div className="cards">

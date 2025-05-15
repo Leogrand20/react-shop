@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 
 import { getAllItems } from '../api/api'
 import { GoodsList } from '../components/GoodsList'
@@ -7,6 +6,7 @@ import { Cart } from '../components/Cart'
 import { BasketList } from '../components/Basketlist'
 import { Alert } from '../components/Alert'
 
+import { useAppDispatch, useAppSelector } from '../redux/store'
 import { setGoods } from '../redux/slices/goodsSlice'
 import {
   selectAlertName,
@@ -14,9 +14,9 @@ import {
 } from '../redux/slices/orderSlice'
 
 export const Main = () => {
-  const dispatch = useDispatch()
-  const isBasketVisible = useSelector(selectToggleBasketVisible)
-  const alertName = useSelector(selectAlertName)
+  const dispatch = useAppDispatch()
+  const isBasketVisible = useAppSelector(selectToggleBasketVisible)
+  const alertName = useAppSelector(selectAlertName)
 
   useEffect(() => {
     getAllItems().then((data) => {

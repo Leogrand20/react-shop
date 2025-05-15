@@ -1,6 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-const initialState = {
+import { IGood, OrderSlice } from '../../types/goods'
+
+const initialState: OrderSlice = {
   order: [],
   isBasketVisible: false,
   alertName: '',
@@ -11,7 +13,7 @@ const orderSlice = createSlice({
   initialState,
 
   reducers: {
-    setAddItemToBasket: (state, { payload }) => {
+    setAddItemToBasket: (state, { payload }: PayloadAction<IGood>) => {
       const index = state.order.findIndex(
         (orderItem) => orderItem.id === payload.id,
       )
@@ -88,9 +90,5 @@ export const {
   setIncreaseQuantity,
   setDecreaseQuantity,
 } = orderSlice.actions
-
-export const selectOrder = (state) => state.order.order
-export const selectToggleBasketVisible = (state) => state.order.isBasketVisible
-export const selectAlertName = (state) => state.order.alertName
 
 export default orderSlice.reducer

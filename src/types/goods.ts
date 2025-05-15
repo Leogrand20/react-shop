@@ -59,14 +59,19 @@ export interface IGood {
   series: string | null
   banner: string | null
   offerTag: IOfferTag
-}
-
-export interface IGoodID extends IGood {
   id: string
+  quantity: number
+  name: string
 }
 
-export type Goods = IGoodID[]
+export type Goods = IGood[]
 
 export type GoodsSlice = {
   goods: Goods
+}
+
+export type OrderSlice = {
+  order: Goods
+  isBasketVisible: boolean
+  alertName: string
 }

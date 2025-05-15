@@ -11,7 +11,7 @@ import { setGoods } from '../redux/slices/goodsSlice'
 import {
   selectAlertName,
   selectToggleBasketVisible,
-} from '../redux/slices/orderSlice'
+} from '../redux/selectors/order-selectors'
 
 export const Main = () => {
   const dispatch = useAppDispatch()

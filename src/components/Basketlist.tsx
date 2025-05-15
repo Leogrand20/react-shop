@@ -1,15 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux'
-
+import { useAppDispatch, useAppSelector } from '../redux/store'
 import { BasketItem } from './BasketItem'
 import {
-  selectOrder,
   setToggleBasketVisible,
   setClearBasket,
 } from '../redux/slices/orderSlice'
+import { selectOrder } from '../redux/selectors/order-selectors'
 
 export const BasketList = () => {
-  const order = useSelector(selectOrder)
-  const dispatch = useDispatch()
+  const order = useAppSelector(selectOrder)
+  const dispatch = useAppDispatch()
 
   const totalPrice = order.reduce(
     (acc, { price, quantity }) => (acc += price.finalPrice * quantity),

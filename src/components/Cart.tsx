@@ -1,11 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux'
 import { FaCartArrowDown } from 'react-icons/fa'
 
-import { selectOrder, setToggleBasketVisible } from '../redux/slices/orderSlice'
+import { setToggleBasketVisible } from '../redux/slices/orderSlice'
+import { selectOrder } from '../redux/selectors/order-selectors'
+import { useAppDispatch, useAppSelector } from '../redux/store'
 
 export const Cart = () => {
-  const order = useSelector(selectOrder)
-  const dispatch = useDispatch()
+  const order = useAppSelector(selectOrder)
+  const dispatch = useAppDispatch()
 
   const quantity = order.length
 

@@ -1,11 +1,12 @@
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 
-import { setCloseAlert, selectAlertName } from '../redux/slices/orderSlice'
+import { useAppDispatch, useAppSelector } from '../redux/store'
+import { setCloseAlert } from '../redux/slices/orderSlice'
+import { selectAlertName } from '../redux/selectors/order-selectors'
 
 export const Alert = () => {
-  const alertName = useSelector(selectAlertName)
-  const dispatch = useDispatch()
+  const alertName = useAppSelector(selectAlertName)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     const id = setTimeout(() => {

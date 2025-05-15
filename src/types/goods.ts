@@ -75,3 +75,5 @@ export type OrderSlice = {
   isBasketVisible: boolean
   alertName: string
 }
+
+export type BasketItemProps = Pick<IGood, 'id' | 'name' | 'price' | 'quantity'>

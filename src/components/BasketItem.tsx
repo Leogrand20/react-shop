@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import { useDispatch } from 'react-redux'
 import { IoCloseOutline } from 'react-icons/io5'
 import { CiSquarePlus, CiSquareMinus } from 'react-icons/ci'
@@ -7,8 +8,14 @@ import {
   setIncreaseQuantity,
   setDecreaseQuantity,
 } from '../redux/slices/orderSlice'
+import { BasketItemProps } from '../types/goods'
 
-export const BasketItem = ({ id, name, price, quantity }) => {
+export const BasketItem: FC<BasketItemProps> = ({
+  id,
+  name,
+  price,
+  quantity,
+}) => {
   const dispatch = useDispatch()
 
   return (

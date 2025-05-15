@@ -1,23 +1,38 @@
-import { defineConfig } from 'eslint/config'
+import css from '@eslint/css'
 import globals from 'globals'
 import js from '@eslint/js'
-import pluginReact from 'eslint-plugin-react'
-import css from '@eslint/css'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import tseslint from 'typescript-eslint'
 
-export default defineConfig([
-  { files: ['**/*.{css,js,mjs,cjs,jsx}'] },
+export default tseslint.config(
+  { ignores: ['dist'] },
+
   {
-    files: ['**/*.{css,js,mjs,cjs,jsx}'],
-    languageOptions: { globals: globals.browser },
-  },
-  {
-    files: ['**/*.{css,js,mjs,cjs,jsx}'],
-    plugins: { css, js },
-    extends: ['js/recommended'],
-    language: 'css/css',
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    files: ['**/*.{ts,tsx}'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      globals: globals.browser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        ecmaFeatures: { jsx: true },
+        sourceType: 'module',
+      },
+    },
+    settings: { react: { version: '19.1' } },
+    plugins: {
+      css,
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+    },
     rules: {
       'css/no-duplicate-imports': 'error',
+      ...reactHooks.configs.recommended.rules,
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
     },
   },
-  pluginReact.configs.flat.recommended,
-])
+)

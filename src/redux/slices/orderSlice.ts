@@ -65,18 +65,12 @@ const orderSlice = createSlice({
     setDecreaseQuantity: (state, { payload }) => {
       state.order = state.order.map((orderItem) => {
         if (orderItem.id === payload) {
-          let newOrderItem: number
-
-          if (orderItem.quantity) {
-            newOrderItem = orderItem.quantity - 1
+          return {
+            ...orderItem,
+            quantity: orderItem.quantity ? orderItem.quantity - 1 : 0,
           }
-            
-            return {
-              ...orderItem,
-              quantity: newOrderItem ? newOrderItem : 0,
-            }
-          } else return orderItem
-        })
+        } else return orderItem
+      })
     },
 
     setCloseAlert: (state) => {

@@ -73,7 +73,9 @@ const orderSlice = createSlice({
             ...orderItem,
             quantity: newOrderItem ? newOrderItem : 0,
           }
-        } else return orderItem
+        } else {
+          return orderItem
+        }
       })
     },
 

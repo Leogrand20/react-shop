@@ -47,18 +47,20 @@ const orderSlice = createSlice({
       state.order = []
     },
 
-    setRemoveItemFromBasket: (state, { payload }) => {
+    setRemoveItemFromBasket: (state, { payload }: PayloadAction<string>) => {
       state.order = state.order.filter(({ id }) => id !== payload)
     },
 
-    setIncreaseQuantity: (state, { payload }) => {
+    setIncreaseQuantity: (state, { payload }: PayloadAction<string>) => {
       state.order = state.order.map((orderItem) => {
         if (orderItem.id === payload) {
           return {
             ...orderItem,
             quantity: orderItem.quantity + 1,
           }
-        } else return orderItem
+        } else {
+          return orderItem
+        }
       })
     },
 

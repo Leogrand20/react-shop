@@ -19,12 +19,12 @@ const orderSlice = createSlice({
       )
 
       if (index < 0) {
-        const newItem = {
+        const newOrderItem = {
           ...payload,
           quantity: 1,
         }
 
-        state.order = [...state.order, newItem]
+        state.order = [...state.order, newOrderItem]
       } else {
         state.order = state.order.map((orderItem, id) => {
           if (id === index) {

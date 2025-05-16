@@ -64,7 +64,7 @@ const orderSlice = createSlice({
       })
     },
 
-    setDecreaseQuantity: (state, { payload }) => {
+    setDecreaseQuantity: (state, { payload }: PayloadAction<string>) => {
       state.order = state.order.map((orderItem) => {
         if (orderItem.id === payload) {
           const newOrderItem = orderItem.quantity - 1

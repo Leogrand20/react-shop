@@ -1,4 +1,4 @@
-import { ReactNode, useReducer, useMemo } from 'react'
+import { ReactNode, useReducer, useMemo, useCallback } from 'react'
 
 import { shopReducer } from './reducer'
 import { ShopContext, ShopContextValue } from './shop-context'
@@ -15,8 +15,10 @@ const initialState: ShopState = {
 export const ShopProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(shopReducer, initialState)
 
-  const setGoods = (data: Goods) =>
-    dispatch({ type: 'SET_GOODS', payload: data })
+  const setGoods = useCallback(
+    (data: Goods) => dispatch({ type: 'SET_GOODS', payload: data }),
+    [],
+  )
 
   const addItemToBasket = (item: IGood) =>
     dispatch({ type: 'ADD_ITEM_TO_BASKET', payload: item })
@@ -34,8 +36,7 @@ export const ShopProvider = ({ children }: { children: ReactNode }) => {
   const decreaseQuantity = (id: string) =>
     dispatch({ type: 'DECREASE_QUANTITY', payload: id })
 
-  const closeAlert = () => dispatch({ type: 'CLOSE_ALERT' })
-  // const closeAlert = useCallback(() => dispatch({ type: 'CLOSE_ALERT' }), [])
+  const closeAlert = useCallback(() => dispatch({ type: 'CLOSE_ALERT' }), [])
 
   const value: ShopContextValue = useMemo(
     () => ({
@@ -49,7 +50,7 @@ export const ShopProvider = ({ children }: { children: ReactNode }) => {
       decreaseQuantity,
       closeAlert,
     }),
-    [state],
+    [state, setGoods, closeAlert],
   )
 
   return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>

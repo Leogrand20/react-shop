@@ -2,7 +2,7 @@ import { Header } from './layout/Header'
 import { Main } from './layout/Main'
 import { Footer } from './layout/Footer'
 
-import { ContextProvider } from './context/Context'
+import { ShopProvider } from './context/ShopProvider'
 
 import './App.css'
 
@@ -10,9 +10,10 @@ export const App = () => {
   return (
     <div className="shop">
       <Header />
-      <ContextProvider>
+      <ShopProvider>
         <Main />
-      </ContextProvider>
+      </ShopProvider>
+
       <Footer />
     </div>
   )

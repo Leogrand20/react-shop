@@ -3,7 +3,7 @@ import { IoCloseOutline } from 'react-icons/io5'
 import { CiSquarePlus, CiSquareMinus } from 'react-icons/ci'
 
 import { BasketItemProps } from '../types/goods'
-import { useShop } from '../context/Context'
+import { useShop } from '../context/useShop'
 
 export const BasketItem: FC<BasketItemProps> = ({
   id,

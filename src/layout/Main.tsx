@@ -5,7 +5,7 @@ import { useShop } from '../context/useShop'
 
 import { GoodsList } from '../components/GoodsList'
 import { Cart } from '../components/Cart'
-import { BasketList } from '../components/BasketLists'
+import { BasketList } from '../components/BasketList'
 import { Alert } from '../components/Alert'
 
 export const Main = () => {

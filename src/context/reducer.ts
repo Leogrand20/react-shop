@@ -1,4 +1,9 @@
-export const reducer = (state, action) => {
+import { ShopAction, ShopState } from './Context'
+
+export const shopReducer = (
+  state: ShopState,
+  action: ShopAction,
+): ShopState => {
   switch (action.type) {
     case 'SET_GOODS':
       return {
@@ -55,14 +60,14 @@ export const reducer = (state, action) => {
     case 'REMOVE_ITEM_FROM_BASKET':
       return {
         ...state,
-        order: state.order.filter(({ id }) => id !== action.payload.id),
+        order: state.order.filter(({ id }) => id !== action.payload),
       }
 
     case 'INCREASE_QUANTITY':
       return {
         ...state,
         order: state.order.map((orderItem) => {
-          if (orderItem.id === action.payload.id) {
+          if (orderItem.id === action.payload) {
             return {
               ...orderItem,
               quantity: orderItem.quantity + 1,
@@ -77,7 +82,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         order: state.order.map((orderItem) => {
-          if (orderItem.id === action.payload.id) {
+          if (orderItem.id === action.payload) {
             const newOrderItem = orderItem.quantity - 1
 
             return {

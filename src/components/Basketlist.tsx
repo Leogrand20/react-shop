@@ -1,10 +1,8 @@
-import { useContext } from 'react'
-
 import { BasketItem } from './BasketItem'
-import { ShopContext } from '../context/Context'
+import { useShop } from '../context/Context'
 
 export const BasketList = () => {
-  const { order, toggleBasketVisible, clearBasket } = useContext(ShopContext)
+  const { order, toggleBasketVisible, clearBasket } = useShop()
 
   const totalPrice = order.reduce(
     (acc, { price, quantity }) => (acc += price.finalPrice * quantity),

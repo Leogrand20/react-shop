@@ -1,9 +1,9 @@
-import { FC, useContext } from 'react'
+import { FC } from 'react'
 import { IoCloseOutline } from 'react-icons/io5'
 import { CiSquarePlus, CiSquareMinus } from 'react-icons/ci'
 
 import { BasketItemProps } from '../types/goods'
-import { ShopContext } from '../context/Context'
+import { useShop } from '../context/Context'
 
 export const BasketItem: FC<BasketItemProps> = ({
   id,
@@ -11,8 +11,7 @@ export const BasketItem: FC<BasketItemProps> = ({
   price,
   quantity,
 }) => {
-  const { removeItemFromBasket, increaseQuantity, decreaseQuantity } =
-    useContext(ShopContext)
+  const { removeItemFromBasket, increaseQuantity, decreaseQuantity } = useShop()
 
   return (
     <>

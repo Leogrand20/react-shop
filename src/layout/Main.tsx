@@ -1,7 +1,7 @@
-import { useContext, useEffect } from 'react'
+import { useEffect } from 'react'
 
 import { getAllItems } from '../api/api'
-import { ShopContext } from '../context/Context'
+import { useShop } from '../context/Context'
 
 import { GoodsList } from '../components/GoodsList'
 import { Cart } from '../components/Cart'
@@ -9,7 +9,7 @@ import { BasketList } from '../components/Basketlist'
 import { Alert } from '../components/Alert'
 
 export const Main = () => {
-  const { setGoods, isBasketVisible, alertName } = useContext(ShopContext)
+  const { setGoods, isBasketVisible, alertName } = useShop()
 
   useEffect(() => {
     getAllItems().then((data) => {

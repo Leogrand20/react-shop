@@ -1,9 +1,9 @@
-import { useContext, useEffect } from 'react'
+import { useEffect } from 'react'
 
-import { ShopContext } from '../context/Context'
+import { useShop } from '../context/Context'
 
 export const Alert = () => {
-  const { alertName, closeAlert } = useContext(ShopContext)
+  const { alertName, closeAlert } = useShop()
 
   useEffect(() => {
     const id = setTimeout(() => {

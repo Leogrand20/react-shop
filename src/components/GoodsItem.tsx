@@ -1,7 +1,7 @@
-import { FC, useContext } from 'react'
+import { FC } from 'react'
 
 import { GoodsItemProps } from '../types/goods'
-import { ShopContext } from '../context/Context'
+import { useShop } from '../context/Context'
 
 export const GoodsItem: FC<GoodsItemProps> = ({
   id,
@@ -17,7 +17,7 @@ export const GoodsItem: FC<GoodsItemProps> = ({
     image = granted[0]?.images.full_background
   }
 
-  const { addItemToBasket } = useContext(ShopContext)
+  const { addItemToBasket } = useShop()
 
   return (
     <div className="card">

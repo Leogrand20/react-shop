@@ -1,10 +1,8 @@
-import { useContext } from 'react'
-
 import { GoodsItem } from './GoodsItem'
-import { ShopContext } from '../context/Context'
+import { useShop } from '../context/Context'
 
 export const GoodsList = () => {
-  const { goods } = useContext(ShopContext)
+  const { goods } = useShop()
 
   return (
     <div className="cards">

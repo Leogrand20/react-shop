@@ -1,10 +1,9 @@
-import { useContext } from 'react'
 import { FaCartArrowDown } from 'react-icons/fa'
 
-import { ShopContext } from '../context/Context'
+import { useShop } from '../context/Context'
 
 export const Cart = () => {
-  const { order, toggleBasketVisible } = useContext(ShopContext)
+  const { order, toggleBasketVisible } = useShop()
 
   const quantity = order.length
 

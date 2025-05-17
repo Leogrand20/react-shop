@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 
 import { getAllItems } from '../api/api'
-import { useShop } from '../context/Context'
+import { useShop } from '../context/useShop'
 
 import { GoodsList } from '../components/GoodsList'
 import { Cart } from '../components/Cart'
-import { BasketList } from '../components/Basketlist'
+import { BasketList } from '../components/BasketList'
 import { Alert } from '../components/Alert'
 
 export const Main = () => {

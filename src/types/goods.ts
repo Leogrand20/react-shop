@@ -28,3 +28,10 @@ export type GoodsItemProps = Pick<
   IGood,
   'id' | 'displayName' | 'displayDescription' | 'price' | 'granted' | 'quantity'
 >
+
+export interface ShopState {
+  goods: Goods
+  order: Goods
+  isBasketVisible: boolean
+  alertName: string
+}

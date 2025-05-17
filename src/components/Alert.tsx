@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import { useShop } from '../context/Context'
+import { useShop } from '../context/useShop'
 
 export const Alert = () => {
   const { alertName, closeAlert } = useShop()

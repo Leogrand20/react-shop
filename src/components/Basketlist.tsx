@@ -1,5 +1,5 @@
 import { BasketItem } from './BasketItem'
-import { useShop } from '../context/Context'
+import { useShop } from '../context/useShop'
 
 export const BasketList = () => {
   const { order, toggleBasketVisible, clearBasket } = useShop()

@@ -1,9 +1,10 @@
+import { useContext } from 'react'
+
 import { GoodsItem } from './GoodsItem'
-import { selectGoods } from '../redux/selectors/goods-selectors'
-import { useAppSelector } from '../redux/store'
+import { ShopContext } from '../context/Context'
 
 export const GoodsList = () => {
-  const goods = useAppSelector(selectGoods)
+  const { goods } = useContext(ShopContext)
 
   return (
     <div className="cards">

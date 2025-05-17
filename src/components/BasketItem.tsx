@@ -1,14 +1,9 @@
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 import { IoCloseOutline } from 'react-icons/io5'
 import { CiSquarePlus, CiSquareMinus } from 'react-icons/ci'
 
-import { useAppDispatch } from '../redux/store'
-import {
-  setRemoveItemFromBasket,
-  setIncreaseQuantity,
-  setDecreaseQuantity,
-} from '../redux/slices/orderSlice'
 import { BasketItemProps } from '../types/goods'
+import { ShopContext } from '../context/Context'
 
 export const BasketItem: FC<BasketItemProps> = ({
   id,
@@ -16,7 +11,8 @@ export const BasketItem: FC<BasketItemProps> = ({
   price,
   quantity,
 }) => {
-  const dispatch = useAppDispatch()
+  const { removeItemFromBasket, increaseQuantity, decreaseQuantity } =
+    useContext(ShopContext)
 
   return (
     <>
@@ -25,19 +21,19 @@ export const BasketItem: FC<BasketItemProps> = ({
           {name}
           <CiSquarePlus
             className="-mr-2 hover:cursor-pointer"
-            onClick={() => dispatch(setIncreaseQuantity(id))}
+            onClick={() => increaseQuantity(id)}
           />
           {quantity} шт.
           <CiSquareMinus
             className="-ml-2 hover:cursor-pointer"
-            onClick={() => dispatch(setDecreaseQuantity(id))}
+            onClick={() => decreaseQuantity(id)}
           />
           {quantity && price.finalPrice * quantity} руб.
         </div>
 
         <IoCloseOutline
           className="item-delete"
-          onClick={() => dispatch(setRemoveItemFromBasket(id))}
+          onClick={() => removeItemFromBasket(id)}
         />
       </div>
       <hr />

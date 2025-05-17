@@ -1,14 +1,10 @@
-import { useAppDispatch, useAppSelector } from '../redux/store'
+import { useContext } from 'react'
+
 import { BasketItem } from './BasketItem'
-import {
-  setToggleBasketVisible,
-  setClearBasket,
-} from '../redux/slices/orderSlice'
-import { selectOrder } from '../redux/selectors/order-selectors'
+import { ShopContext } from '../context/Context'
 
 export const BasketList = () => {
-  const order = useAppSelector(selectOrder)
-  const dispatch = useAppDispatch()
+  const { order, toggleBasketVisible, clearBasket } = useContext(ShopContext)
 
   const totalPrice = order.reduce(
     (acc, { price, quantity }) => (acc += price.finalPrice * quantity),
@@ -17,10 +13,7 @@ export const BasketList = () => {
 
   return (
     <div className="basket">
-      <span
-        className="btn-close"
-        onClick={() => dispatch(setToggleBasketVisible())}
-      >
+      <span className="btn-close" onClick={toggleBasketVisible}>
         &times;
       </span>
       <h1 className="text-center text-3xl">Корзина товаров</h1>
@@ -33,11 +26,7 @@ export const BasketList = () => {
         Общая стоимость товаров: {totalPrice} руб.
       </span>
 
-      <button
-        type="button"
-        className="btn-clear"
-        onClick={() => dispatch(setClearBasket())}
-      >
+      <button type="button" className="btn-clear" onClick={clearBasket}>
         Очистить корзину
       </button>
     </div>

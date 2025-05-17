@@ -1,8 +1,7 @@
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 
-import { useAppDispatch } from '../redux/store'
-import { setAddItemToBasket } from '../redux/slices/orderSlice'
 import { GoodsItemProps } from '../types/goods'
+import { ShopContext } from '../context/Context'
 
 export const GoodsItem: FC<GoodsItemProps> = ({
   id,
@@ -15,10 +14,10 @@ export const GoodsItem: FC<GoodsItemProps> = ({
   let image: string | null = ''
 
   if (granted) {
-    image = granted[0].images.full_background
+    image = granted[0]?.images.full_background
   }
 
-  const dispatch = useAppDispatch()
+  const { addItemToBasket } = useContext(ShopContext)
 
   return (
     <div className="card">
@@ -34,9 +33,7 @@ export const GoodsItem: FC<GoodsItemProps> = ({
           {name && (
             <button
               type="button"
-              onClick={() =>
-                dispatch(setAddItemToBasket({ id, name, price, quantity }))
-              }
+              onClick={() => addItemToBasket({ id, name, price, quantity })}
             >
               Купить
             </button>

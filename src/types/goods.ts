@@ -22,16 +22,6 @@ export interface IGood {
 
 export type Goods = IGood[]
 
-export type GoodsSlice = {
-  goods: Goods
-}
-
-export type OrderSlice = {
-  order: Goods
-  isBasketVisible: boolean
-  alertName: string
-}
-
 export type BasketItemProps = Pick<IGood, 'id' | 'name' | 'price' | 'quantity'>
 
 export type GoodsItemProps = Pick<

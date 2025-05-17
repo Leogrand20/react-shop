@@ -1,17 +1,15 @@
+import { useContext } from 'react'
 import { FaCartArrowDown } from 'react-icons/fa'
 
-import { setToggleBasketVisible } from '../redux/slices/orderSlice'
-import { selectOrder } from '../redux/selectors/order-selectors'
-import { useAppDispatch, useAppSelector } from '../redux/store'
+import { ShopContext } from '../context/Context'
 
 export const Cart = () => {
-  const order = useAppSelector(selectOrder)
-  const dispatch = useAppDispatch()
+  const { order, toggleBasketVisible } = useContext(ShopContext)
 
   const quantity = order.length
 
   return (
-    <div className="cart" onClick={() => dispatch(setToggleBasketVisible())}>
+    <div className="cart" onClick={toggleBasketVisible}>
       <FaCartArrowDown />
 
       {quantity && <span className="cart-quantity">{quantity}</span>}

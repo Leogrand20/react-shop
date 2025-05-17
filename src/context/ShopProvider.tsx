@@ -1,4 +1,4 @@
-import { ReactNode, useReducer, useMemo, useCallback } from 'react'
+import { ReactNode, useReducer, useMemo } from 'react'
 
 import { shopReducer } from './reducer'
 import { ShopContext, ShopContextValue } from './shop-context'

@@ -11,7 +11,7 @@ export const Alert = () => {
     }, 2500)
 
     return () => clearTimeout(id)
-  }, [alertName, closeAlert])
+  }, [alertName])
 
   return (
     <div className="alert">

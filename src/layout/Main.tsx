@@ -15,7 +15,7 @@ export const Main = () => {
     getAllItems().then((data) => {
       setGoods(data)
     })
-  }, [setGoods])
+  }, [])
 
   return (
     <main className="main">

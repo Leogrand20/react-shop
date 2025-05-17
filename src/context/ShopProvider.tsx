@@ -1,4 +1,4 @@
-import { ReactNode, useReducer, useMemo } from 'react'
+import { ReactNode, useReducer, useMemo, useCallback } from 'react'
 
 import { shopReducer } from './reducer'
 import { ShopContext, ShopContextValue } from './shop-context'
@@ -35,6 +35,7 @@ export const ShopProvider = ({ children }: { children: ReactNode }) => {
     dispatch({ type: 'DECREASE_QUANTITY', payload: id })
 
   const closeAlert = () => dispatch({ type: 'CLOSE_ALERT' })
+  // const closeAlert = useCallback(() => dispatch({ type: 'CLOSE_ALERT' }), [])
 
   const value: ShopContextValue = useMemo(
     () => ({

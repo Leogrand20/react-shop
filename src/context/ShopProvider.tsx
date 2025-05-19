@@ -1,9 +1,8 @@
-import { ReactNode, useReducer, useMemo, useCallback } from 'react'
+import { ReactNode, useCallback,useMemo, useReducer } from 'react'
 
+import { Goods, IGood , ShopState } from '../types/goods'
 import { shopReducer } from './reducer'
 import { ShopContext, ShopContextValue } from './shop-context'
-import { Goods, IGood } from '../types/goods'
-import { ShopState } from '../types/goods'
 
 const initialState: ShopState = {
   goods: [],

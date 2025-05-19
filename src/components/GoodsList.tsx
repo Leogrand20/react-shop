@@ -1,5 +1,5 @@
-import { GoodsItem } from './GoodsItem'
 import { useShop } from '../context/useShop'
+import { GoodsItem } from './GoodsItem'
 
 export const GoodsList = () => {
   const { goods } = useShop()

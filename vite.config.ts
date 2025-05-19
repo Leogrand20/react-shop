@@ -1,13 +1,11 @@
-import { defineConfig } from 'vite'
-import { resolve } from 'path'
-
-import react from '@vitejs/plugin-react-swc'
 import tailwindcss from '@tailwindcss/vite'
-
-import legacy from 'vite-plugin-legacy-swc'
-import htmlTemplate from 'vite-plugin-html-template-mpa'
+import react from '@vitejs/plugin-react-swc'
+import { resolve } from 'path'
+import { defineConfig } from 'vite'
 import copy from 'vite-plugin-cp'
+import htmlTemplate from 'vite-plugin-html-template-mpa'
 import Inspect from 'vite-plugin-inspect'
+import legacy from 'vite-plugin-legacy-swc'
 
 const chunkSize = 1024
 

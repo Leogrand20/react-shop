@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-import { API_URL, API_KEY } from './config'
-import { createGoods } from '../utils/createGoods'
 import { Goods } from '../types/goods'
+import { createGoods } from '../utils/createGoods'
+import { API_KEY,API_URL } from './config'
 
 export const getAllItems = async (): Promise<Goods> => {
   const { data } = await axios(API_URL, {

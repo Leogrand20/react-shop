@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 
-import { getAllItems } from '../api/api'
-import { Alert } from '../components/Alert'
-import { BasketList } from '../components/BasketList'
-import { Cart } from '../components/Cart'
-import { GoodsList } from '../components/GoodsList'
-import { useShop } from '../context/useShop'
+import { useShop } from '@shared/hooks/useShop'
+import { Alert } from '@shared/ui/Alert/Alert'
+import { BasketList } from '@entities/cart/ui/BasketList'
+import { getAllItems } from '@entities/product/api/api'
+import { GoodsList } from '@entities/product/ui/GoodsList'
+import { Cart } from '@features/cart/ui/Cart'
 
 export const Main = () => {
   const { setGoods, isBasketVisible, alertName } = useShop()

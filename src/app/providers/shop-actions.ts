@@ -1,4 +1,4 @@
-import { Goods, IGood } from '../types/goods'
+import { Goods, IGood } from '@shared/types/goods'
 
 export type ShopAction =
   | { type: 'SET_GOODS'; payload: Goods }

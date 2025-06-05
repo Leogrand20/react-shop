@@ -1,6 +1,6 @@
 import { FaCartArrowDown } from 'react-icons/fa'
 
-import { useShop } from '../context/useShop'
+import { useShop } from '@shared/hooks/useShop'
 
 export const Cart = () => {
   const { order, toggleBasketVisible } = useShop()

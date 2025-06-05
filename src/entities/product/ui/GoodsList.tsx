@@ -1,4 +1,5 @@
-import { useShop } from '../context/useShop'
+import { useShop } from '@shared/hooks/useShop'
+
 import { GoodsItem } from './GoodsItem'
 
 export const GoodsList = () => {

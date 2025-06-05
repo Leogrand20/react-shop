@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "@css/fonts.css";
+@import 'tailwindcss';
+@import '@css/fonts.css';
 
 @theme {
   --color-black-000: #000;
@@ -7,8 +7,8 @@
   --color-white-333: #fff;
   --text-100: 100px;
   --size-100: 100px;
-  --font-roboto: "Roboto", sans-serif;
-  --font-tilda: "TildaSans", sans-serif;
+  --font-roboto: 'Roboto', sans-serif;
+  --font-tilda: 'TildaSans', sans-serif;
 }
 
 body {

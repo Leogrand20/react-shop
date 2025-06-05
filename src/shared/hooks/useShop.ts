@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 
-import { ShopContext, ShopContextValue } from './shop-context'
+import { ShopContext, ShopContextValue } from '@app/providers/shop-context'
 
 export const useShop = (): ShopContextValue => {
   const ctx = useContext(ShopContext)

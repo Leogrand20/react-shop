@@ -1,9 +1,9 @@
 import { FC } from 'react'
-import { CiSquareMinus,CiSquarePlus } from 'react-icons/ci'
+import { CiSquareMinus, CiSquarePlus } from 'react-icons/ci'
 import { IoCloseOutline } from 'react-icons/io5'
 
-import { useShop } from '../context/useShop'
-import { BasketItemProps } from '../types/goods'
+import { useShop } from '@shared/hooks/useShop'
+import { BasketItemProps } from '@shared/types/goods'
 
 export const BasketItem: FC<BasketItemProps> = ({
   id,

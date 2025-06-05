@@ -1,8 +1,9 @@
 import axios from 'axios'
 
-import { Goods } from '../types/goods'
-import { createGoods } from '../utils/createGoods'
-import { API_KEY,API_URL } from './config'
+import { API_KEY, API_URL } from '@shared/api/config'
+import { Goods } from '@shared/types/goods'
+
+import { createGoods } from '../lib/createGoods'
 
 export const getAllItems = async (): Promise<Goods> => {
   const { data } = await axios(API_URL, {

@@ -1,7 +1,6 @@
 import { createContext } from 'react'
 
-import { Goods, IGood,ShopState  } from '../types/goods'
-
+import { Goods, IGood, ShopState } from '@shared/types/goods'
 
 export const ShopContext = createContext<ShopContextValue | null>(null)
 

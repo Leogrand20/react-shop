@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { useShop } from '../context/useShop'
-import { GoodsItemProps } from '../types/goods'
+import { useShop } from '@shared/hooks/useShop'
+import { GoodsItemProps } from '@shared/types/goods'
 
 export const GoodsItem: FC<GoodsItemProps> = ({
   id,

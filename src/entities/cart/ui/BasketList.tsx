@@ -1,11 +1,21 @@
-import { useShop } from '../context/useShop'
+import { useShop } from '@shared/hooks/useShop'
+import { Goods } from '@shared/types/goods'
+
 import { BasketItem } from './BasketItem'
 
 export const BasketList = () => {
-  const { order, toggleBasketVisible, clearBasket } = useShop()
+  const {
+    order,
+    toggleBasketVisible,
+    clearBasket,
+  }: {
+    order: Goods
+    toggleBasketVisible: () => void
+    clearBasket: () => void
+  } = useShop()
 
   const totalPrice = order.reduce(
-    (acc, { price, quantity }) => (acc += price.finalPrice * quantity),
+    (acc: number, item) => acc + (item.price?.finalPrice ?? 0) * item.quantity,
     0,
   )
 
@@ -15,11 +25,13 @@ export const BasketList = () => {
         &times;
       </span>
       <h1 className="text-center text-3xl">Корзина товаров</h1>
+
       {order.length ? (
         order.map((item) => <BasketItem key={item.id} {...item} />)
       ) : (
         <span className="mt-2 block text-center">Корзина пуста</span>
       )}
+
       <span className="mt-3 block text-xl">
         Общая стоимость товаров: {totalPrice} руб.
       </span>

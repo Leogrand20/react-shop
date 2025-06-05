@@ -1,6 +1,7 @@
 import { Reducer } from 'react'
 
-import { ShopState } from '../types/goods'
+import { ShopState } from '@shared/types/goods'
+
 import { ShopAction } from './shop-actions'
 
 export const shopReducer: Reducer<ShopState, ShopAction> = (

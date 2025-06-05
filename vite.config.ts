@@ -2,7 +2,6 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react-swc'
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
-import copy from 'vite-plugin-cp'
 import htmlTemplate from 'vite-plugin-html-template-mpa'
 import Inspect from 'vite-plugin-inspect'
 import legacy from 'vite-plugin-legacy-swc'
@@ -10,17 +9,11 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 
 const chunkSize = 1024
 
-const copyTarget = {
-  targets: [{ src: './src/assets/video', dest: 'dist/assets/video' }],
-}
-
 const alias = {
   '@': resolve(__dirname, 'src'),
   '@public': resolve(__dirname, 'public'),
-  '@css': resolve(__dirname, 'src/styles'),
-  '@icons': resolve(__dirname, 'src/assets/icons'),
-  '@img': resolve(__dirname, 'src/assets/img'),
-  '@fonts': resolve(__dirname, 'src/assets/fonts'),
+  '@css': resolve(__dirname, 'src/app/styles'),
+  '@fonts': resolve(__dirname, 'src/shared/assets/fonts'),
 }
 
 const extensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']
@@ -57,7 +50,6 @@ export default defineConfig(({ command }) => {
 
       plugins: [
         tsconfigPaths(),
-        copy(copyTarget),
 
         legacy({
           targets: ['>0.3%', 'defaults', 'last 100 versions', 'not dead'],
@@ -115,7 +107,7 @@ export default defineConfig(({ command }) => {
         watch: {},
       },
 
-      plugins: [tsconfigPaths(), Inspect(), copy(copyTarget), react(), tailwindcss()],
+      plugins: [tsconfigPaths(), Inspect(), react(), tailwindcss()],
 
       resolve: {
         alias,

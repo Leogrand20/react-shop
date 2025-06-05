@@ -1,6 +1,7 @@
-import { ReactNode, useCallback,useMemo, useReducer } from 'react'
+import { ReactNode, useCallback, useMemo, useReducer } from 'react'
 
-import { Goods, IGood , ShopState } from '../types/goods'
+import { Goods, IGood, ShopState } from '@shared/types/goods'
+
 import { shopReducer } from './reducer'
 import { ShopContext, ShopContextValue } from './shop-context'
 

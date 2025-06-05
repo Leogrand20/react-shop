@@ -6,6 +6,7 @@ import copy from 'vite-plugin-cp'
 import htmlTemplate from 'vite-plugin-html-template-mpa'
 import Inspect from 'vite-plugin-inspect'
 import legacy from 'vite-plugin-legacy-swc'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 const chunkSize = 1024
 
@@ -55,6 +56,7 @@ export default defineConfig(({ command }) => {
       },
 
       plugins: [
+        tsconfigPaths(),
         copy(copyTarget),
 
         legacy({
@@ -113,7 +115,7 @@ export default defineConfig(({ command }) => {
         watch: {},
       },
 
-      plugins: [Inspect(), copy(copyTarget), react(), tailwindcss()],
+      plugins: [tsconfigPaths(), Inspect(), copy(copyTarget), react(), tailwindcss()],
 
       resolve: {
         alias,

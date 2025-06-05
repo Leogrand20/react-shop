@@ -53,7 +53,8 @@
     "vite-plugin-cp": "^6.0.3",
     "vite-plugin-html-template-mpa": "^1.0.29",
     "vite-plugin-inspect": "^11.0.1",
-    "vite-plugin-legacy-swc": "^1.2.3"
+    "vite-plugin-legacy-swc": "^1.2.3",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
